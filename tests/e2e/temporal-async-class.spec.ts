@@ -3,23 +3,19 @@ import { Test } from '@nestjs/testing';
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { bundleWorkflowCode } from '@temporalio/worker';
 import { randomUUID } from 'crypto';
-import { Server } from 'http';
 import { resolve } from 'path';
 import { TemporalModule } from '../../lib';
 import { TestService } from '../src/test.service';
 import { testWorkflow } from '../src/test.workflow';
 
-jest.setTimeout(60 * 1000);
-
 describe('TypeOrm (async configuration)', () => {
-  let server: Server;
   let app: INestApplication;
   let env: TestWorkflowEnvironment;
 
   const taskQueue = 'testing';
   const workerId = 'TestWorker';
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     env = await TestWorkflowEnvironment.createLocal();
 
     const module = await Test.createTestingModule({
@@ -48,7 +44,7 @@ describe('TypeOrm (async configuration)', () => {
     app = module.createNestApplication();
   });
 
-  it(`should return created entity`, async () => {
+  it(`should return Hello`, async () => {
     const { client } = env;
 
     const worker = app.get('Worker_TestWorker');
@@ -64,7 +60,8 @@ describe('TypeOrm (async configuration)', () => {
     expect(result).toBe('Hello');
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
+    await env.teardown();
     await app.close();
   });
 });
