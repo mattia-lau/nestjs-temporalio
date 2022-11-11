@@ -11,7 +11,6 @@ jobs:
   build:
     services:
       postgresql:
-        container_name: temporal-postgresql
         env:
           - POSTGRES_USER=postgres
           - POSTGRES_PASSWORD=postgres
@@ -21,7 +20,6 @@ jobs:
         volumes:
           - ./data/postgres:/var/lib/postgresql/data
       temporal:
-        container_name: temporal
         depends_on:
           - postgresql
         env:
