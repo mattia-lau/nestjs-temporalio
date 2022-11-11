@@ -17,8 +17,6 @@ jobs:
         image: postgres
         ports:
           - 5433:5432
-        volumes:
-          - ./data/postgres:/var/lib/postgresql/data
       temporal:
         env:
           DB: postgresql
