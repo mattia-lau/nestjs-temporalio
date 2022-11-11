@@ -9,6 +9,30 @@ on:
 
 jobs:
   build:
+    services:
+      postgresql:
+        container_name: temporal-postgresql
+        env:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        image: postgres
+        ports:
+          - 5433:5432
+        volumes:
+          - ./data/postgres:/var/lib/postgresql/data
+      temporal:
+        container_name: temporal
+        depends_on:
+          - postgresql
+        env:
+          - DB=postgresql
+          - DB_PORT=5433
+          - POSTGRES_USER=postgres
+          - POSTGRES_PWD=postgres
+          - POSTGRES_SEEDS=postgresql
+        image: temporalio/auto-setup:1.18.4
+        ports:
+          - 7233:7233
 
     runs-on: ubuntu-latest
 
