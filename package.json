@@ -7,12 +7,12 @@
   "author": "mattia.lau",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mattia-lau/marco-js.git"
+    "url": "git+https://github.com/mattia-lau/nestjs-temporalio.git"
   },
   "bugs": {
-    "url": "https://github.com/mattia-lau/marco-js/issues"
+    "url": "https://github.com/mattia-lau/nestjs-temporalio/issues"
   },
-  "homepage": "https://github.com/mattia-lau/marco-js#readme",
+  "homepage": "https://github.com/mattia-lau/nestjs-temporalio#readme",
   "keywords": [
     "NestJS",
     "Temporal",
@@ -25,7 +25,8 @@
     "format": "prettier --write \"lib/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "eslint \"lib/**/*.ts\" --fix",
     "prerelease": "npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "release-it"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
@@ -49,6 +50,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "reflect-metadata": "^0.1.13",
+    "release-it": "^15.5.0",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.7",
     "ts-jest": "^29.0.3",

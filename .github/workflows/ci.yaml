@@ -48,3 +48,12 @@ jobs:
       - run: yarn build
     
       - run: yarn test:e2e
+
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - run: yarn release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
