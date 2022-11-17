@@ -1,7 +1,7 @@
 {
   "git": {
     "tagName": "${version}",
-    "commitMessage": "[skip ci]chore(): release v${version}"
+    "commitMessage": "chore(): release v${version} [skip ci]"
   },
   "github": {
     "release": true
