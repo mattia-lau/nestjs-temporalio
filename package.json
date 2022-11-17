@@ -70,5 +70,8 @@
     "lib/**/*.ts": [
       "yarn lint"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
